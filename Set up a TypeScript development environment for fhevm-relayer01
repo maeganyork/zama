@@ -1,0 +1,60 @@
+ One week ago I reread the official docs and realized that Solidity code can be compiled online using the Remix editor, but Zama-layer’s TypeScript development environment must be set up locally — I only started creating the local TypeScript environment today.
+
+(一周过去，我反复读了好几遍官方文档，终于明白过来，Solidity代码部分可以直接在Remix在线智能合约部署平台直接部署。但链下使用的Zama中继器加密与解密服务的访问必须使用TypeScript环境，这就只能在本地创建编程环境了。于是今天才开始创建TypeScript编程环境。)
+
+Step 1 (第一步)
+
+Installing NVM(node.js version management) (安装NVM(node.js 版本 管理器))
+
+https://github.com/coreybutler/nvm-windows#installation--upgrades
+
+I installed the application on the D: drive. (我把它安装在D盘。)
+
+When selecting the default installation directory for Node.js,I also chose the D: drive.
+
+(当要求选择默认的Node.js环境目录时，我仍然选择了D盘。)
+
+Step2 (第二步)
+
+Installing Node.js （安装Node.js）
+
+After installing Node.js, check whether the installation was successful.
+
+(After installing Node.js, verify that it installed correctly.)
+
+(After Node.js is installed, confirm the installation succeeded.)
+
+(在安装Node.js之后，检查一下是否安装成功。)
+
+nvm list
+	
+
+查看已安装的 Node.js 版本
+
+nvm install <version>
+	
+
+安装指定版本的 Node.js
+
+nvm use <version>
+	
+
+使用指定版本的 Node.js
+
+nvm alias default <version>
+	
+
+设置默认 Node.js 版本
+
+nvm uninstall <version>
+	
+
+卸载指定版本的 Node.js
+
+nvm ls
+nvm list available
+nvm 20.19.6 //TCL version // an even-numbered version (e.g., v18.x, v20.x) (只能是偶数版本号)
+nvm use  20.19.6
+//check: (verify) (检查，不是体检checkup)
+node -v
+npm -v
