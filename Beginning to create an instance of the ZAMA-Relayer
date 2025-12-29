@@ -1,0 +1,154 @@
+After setting up a TypeScript development environment,I tried to write my first line of code according to the official docs.
+
+(在配置好了TypeScript 的编程环境后，我尝试按照官方文档书写我的第一行代码。)
+
+I copied the following source code from the official docs:
+
+(我从官方文档复制了以下源代码:)
+
+from: https://docs.zama.org/protocol/relayer-sdk-guides/fhevm-relayer/initialization
+
+import { createInstance } from '@zama-fhe/relayer-sdk';
+
+const instance = await createInstance({
+  // ACL_CONTRACT_ADDRESS (FHEVM Host chain)
+  aclContractAddress: '0xf0Ffdc93b7E186bC2f8CB3dAA75D86d1930A433D',
+  // KMS_VERIFIER_CONTRACT_ADDRESS (FHEVM Host chain)
+  kmsContractAddress: '0xbE0E383937d564D7FF0BC3b46c51f0bF8d5C311A',
+  // INPUT_VERIFIER_CONTRACT_ADDRESS (FHEVM Host chain)
+  inputVerifierContractAddress: '0xBBC1fFCdc7C316aAAd72E807D9b0272BE8F84DA0',
+  // DECRYPTION_ADDRESS (Gateway chain)
+  verifyingContractAddressDecryption:
+    '0x5D8BD78e2ea6bbE41f26dFe9fdaEAa349e077478',
+  // INPUT_VERIFICATION_ADDRESS (Gateway chain)
+  verifyingContractAddressInputVerification:
+    '0x483b9dE06E4E4C7D35CCf5837A1668487406D955',
+  // FHEVM Host chain id
+  chainId: 11155111,
+  // Gateway chain id
+  gatewayChainId: 10901,
+  // Optional RPC provider to host chain
+  network: 'https://eth-sepolia.public.blastapi.io',
+  // Relayer URL
+  relayerUrl: 'https://relayer.testnet.zama.org',
+});
+
+Then I compiled the TypeScript file into a JavaScript file:
+(My truth file url:https://github.com/maeganyork/relayer-sdk_my_version/blob/main/src/mytest20251224.ts)
+
+(然后，我将这个typescript代码的文件编译成了js文件:)
+
+.\node_modules\.bin\tsc .\src\test.ts
+
+Then I executed the JavaScript file:
+
+(然后，我运行了这个Js文件：)
+
+node .\src\test.js
+
+I got some errors when running then JavaScript file.
+
+(当运行js文件时，我得到了好一些错误。)
+
+I modified the JavaScript file's code with AI guidance.
+
+(在AI的指导下，我修改了js文件的代码)
+
+First,change JavaScript file's name from `test.js` to `test.cjs`.
+
+(首先，我将js文件的文件名"test.js"修改成为了"test.cjs"。)
+
+Now, the code is:
+
+(现在，代码是这样的:)
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var relayer_sdk_1 = require('@zama-fhe/relayer-sdk/node');
+(async () => {
+    try {
+var instance = await (0, relayer_sdk_1.createInstance)({
+    // ACL_CONTRACT_ADDRESS (FHEVM Host chain)
+    aclContractAddress: '0xf0Ffdc93b7E186bC2f8CB3dAA75D86d1930A433D',
+    // KMS_VERIFIER_CONTRACT_ADDRESS (FHEVM Host chain)
+    kmsContractAddress: '0xbE0E383937d564D7FF0BC3b46c51f0bF8d5C311A',
+    // INPUT_VERIFIER_CONTRACT_ADDRESS (FHEVM Host chain)
+    inputVerifierContractAddress: '0xBBC1fFCdc7C316aAAd72E807D9b0272BE8F84DA0',
+    // DECRYPTION_ADDRESS (Gateway chain)
+    verifyingContractAddressDecryption: '0x5D8BD78e2ea6bbE41f26dFe9fdaEAa349e077478',
+    // INPUT_VERIFICATION_ADDRESS (Gateway chain)
+    verifyingContractAddressInputVerification: '0x483b9dE06E4E4C7D35CCf5837A1668487406D955',
+    // FHEVM Host chain id
+    chainId: 11155111,
+    // Gateway chain id
+    gatewayChainId: 10901,
+    // Optional RPC provider to host chain
+    network: 'https://1rpc.io/sepolia',
+    // Relayer URL
+    relayerUrl: 'https://relayer.testnet.zama.org',
+});
+    console.log('instance created');
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+})();
+
+Old:`var relayer_sdk_1 = require('@zama-fhe/relayer-sdk');`
+
+New:`var relayer_sdk_1 = require('@zama-fhe/relayer-sdk/node');`
+
+Old:` network: 'https://eth-sepolia.public.blastapi.io',`
+
+New:`network: 'https://1rpc.io/sepolia',`
+
+Old:
+
+    try {
+var instance = await (0, relayer_sdk_1.createInstance)({
+    // ACL_CONTRACT_ADDRESS (FHEVM Host chain)
+    aclContractAddress: '0xf0Ffdc93b7E186bC2f8CB3dAA75D86d1930A433D',
+    // KMS_VERIFIER_CONTRACT_ADDRESS (FHEVM Host chain)
+    kmsContractAddress: '0xbE0E383937d564D7FF0BC3b46c51f0bF8d5C311A',
+    // INPUT_VERIFIER_CONTRACT_ADDRESS (FHEVM Host chain)
+    inputVerifierContractAddress: '0xBBC1fFCdc7C316aAAd72E807D9b0272BE8F84DA0',
+    // DECRYPTION_ADDRESS (Gateway chain)
+    verifyingContractAddressDecryption: '0x5D8BD78e2ea6bbE41f26dFe9fdaEAa349e077478',
+    // INPUT_VERIFICATION_ADDRESS (Gateway chain)
+    verifyingContractAddressInputVerification: '0x483b9dE06E4E4C7D35CCf5837A1668487406D955',
+    // FHEVM Host chain id
+    chainId: 11155111,
+    // Gateway chain id
+    gatewayChainId: 10901,
+    // Optional RPC provider to host chain
+    network: 'https://1rpc.io/sepolia',
+    // Relayer URL
+    relayerUrl: 'https://relayer.testnet.zama.org',
+});
+    console.log('instance created');
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+
+New:
+
+(async () => {
+	//some code
+})();
+
+From today's study, I found that it is difficult to use the ZAMA-Relayer library directly from a single static HTML page to interact with an encrypted relay server.
+
+(通过今天的学习，我发现要在单个Html静态页面上调用`ZAMA-delayer`库来完成与加密中继服务器的交互操作的话，是很难做到的。)
+
+About this, I asked an AI, The AI replied that JavaScript library depend on Node.js — especially files with the `.cjs` extension generally cannot be used in a static HTML page.They must be run on a server that supports Node.js.
+
+(关于这一点，我也询问了AI，得到的回复是：一般情况下依赖于Node.js架构的JavaScript库，特别是`.cjs`后缀格式的JavaScript文件，在静态Html页面中是不能被调用的，必须要使用有Node.js架构支持的服务器来运行这些JavaScript代码。)
+
+Also the AI said that in some cases you can bundle the code into plain `.js` files that a static page can use, but this has many limitations an conditions.
+
+(当然，AI也指出在一些情况下，我们还是有可能将这些JavaScript代码打包成静态Html页面可以调用的纯`.js`文件的，只是受到很多条件的限制。)
+
+I originally thought that I could interact with ZAMA-based smart contracts from a static HTML page the same way I interact with plain Solidity contracts. Now I see that interacting with contracts that use ZAMA encryption is must complex.
+
+(我原本以为，我可以像调用纯粹的Solidity智能合约那样在一个静态Html页面中就可以完成与智能合约的所有交互，而如今看来要与使用Zama技术提供加密功能的智能合约交互要复杂很多。)
