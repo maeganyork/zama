@@ -1,0 +1,60 @@
+Today I continued setting up a TypeScript development environment on Windows 10.
+
+(今天，继续学习在windows10系统中配置好typescript的编程环境。)
+
+First of all, I installed Visual Studio Code.
+
+(首先安装了vs Code.)
+
+I don't plan to install the TypeScript package globally. Instead, I'll install different TypeScript versions inside each project. So I didn't run npm install -g typescript; I first downloaded the `https://github.com/zama-ai/relayer-sdk` project's source files into the project folder.
+(My branch: https://github.com/maeganyork/relayer-sdk_my_version)
+(我不打算全局安装TypeScript模块，而是打算在不同的项目中安装不同版本的TypeScript模块。因而没有先使用npm命令全局安装TypeScript，而是先下载了`https://github.com/zama-ai/relayer-sdk`项目的源文件到指定的项目文件夹中。)
+
+In root folder: (在项目的根文件夹下：)
+
+npm install @zama-fhe/relayer-sdk
+//check
+node -e "const p=require('./node_modules/@zama-fhe/relayer-sdk/package.json'); console.log(p.main, p.types, p.name)"
+//output:  lib/node.js lib/node.d.ts @zama-fhe/relayer-sdk
+
+src/test.ts:
+
+import { createInstance, SepoliaConfig } from '@zama-fhe/relayer-sdk';
+
+async function main() {
+  const instance = await createInstance(SepoliaConfig);
+  console.log(instance.getPublicKey())
+}
+
+main().catch(console.error);
+
+The ts file must in src folder.(写的测试用的 ts 类型的文件必须放到src文件夹下。)
+
+\\to js file
+.\node_modules\.bin\tsc .\src\test.ts
+
+Run js file:
+
+node .\src\test.js
+
+Has errors:
+
+Object.defineProperty(exports, "__esModule", { value: true });
+                      ^
+
+ReferenceError: Cannot determine intended module format because both require() and top-level await are present. If the code is intended to be CommonJS, wrap await in an async function. If the code is intended to be an ES module, replace require() with import.
+    at file:src/test.js:2:23
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  code: 'ERR_AMBIGUOUS_MODULE_SYNTAX'
+}
+
+Node.js v22.21.1
+
+The test.js file's source code:
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var relayer_sdk_1 = require("@zama-fhe/relayer-sdk");
+var instance = await (0, relayer_sdk_1.createInstance)(relayer_sdk_1.SepoliaConfig);
