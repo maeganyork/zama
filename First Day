@@ -1,0 +1,19 @@
+Comparing syntax (比较语法)
+
+`FHE.le(var1,var2)`(l is L) (FHV的这个方法的第一个字母是L的小写。)
+
+if var2>var1:
+     return True
+else:
+     return False
+
+`FHE.lt(var1,var2)`(l is L) (FHV的这个方法的第一个字母是L的小写。)
+
+if var2<var1:
+     return True
+else:
+     return False
+
+Don't use `If` syntax (不能使用if语法来判断条件分支)
+
+FHE.select(condition, valueIfTrue, valueIfFalse);
